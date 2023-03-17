@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.player-dashboard {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.player-input {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.plr-butn {
+    display: flex;
+    justify-content: center;
+
+}
+
+.game-dashboard {
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+
+    /* align-items: center; */
+}
+
+.reset-container {
+    display: flex;
+    justify-content: center;
+}
+
+.board {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: #34495e;
+    color: #fff;
+    border: 6px solid #2c3e50;
+    border-radius: 15px;
+    overflow: auto;
+}
+
+.cell {
+    border: 6px solid #2c3e50;
+    border-radius: 2px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
