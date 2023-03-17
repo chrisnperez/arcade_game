@@ -1,3 +1,18 @@
+// dom selectors
+
+
+let singlePlayerButton = document.querySelector("#single-player-btn");
+const hiddenToggle = document.querySelector("#hidden");
+let twoPlayerButton = document.querySelector("#two-players-btn");
+const playerSelectButton = document.querySelector("#select-players")
+let PShiddenToggle = document.querySelector("#select-players")
+hiddenToggle.style.display = "none";
+PShiddenToggle.style.display = "none";
+let playerInput = document.querySelector("#player-one-name");
+let subButton = document.querySelector("#name-sub");
+
+
+
 // need a game state data 
 
 const gameData = {
@@ -11,20 +26,6 @@ const gameData = {
 }
 
 
-// player initiation function
-let singlePlayerButton = document.querySelector("#single-player-btn");
-const hiddenToggle = document.querySelector("#hidden");
-let twoPlayerButton = document.querySelector("#two-players-btn");
-const playerSelectButton = document.querySelector("#select-players")
-let PShiddenToggle = document.querySelector("#select-players")
-hiddenToggle.style.display = "none";
-PShiddenToggle.style.display = "none";
-
-let playerInput = document.querySelector("#player-one-name");
-let subButton = document.querySelector("#name-sub");
-
-
-
 // player button object with event listeners -- need to refactor to forget dry
 const playerButtonObj = {
     singlePlayer: singlePlayerButton.addEventListener('click', () => {
@@ -32,6 +33,8 @@ const playerButtonObj = {
         singlePlayerButton = document.querySelector("#single-player-btn").disabled = true;
         twoPlayerButton = document.querySelector("#two-players-btn").disabled = true;
         PShiddenToggle.style.display = "flex";
+        gameData.players[0] = 'X';
+        gameData.players[1] = 'Computer';
     }), 
     twoPlayers: twoPlayerButton.addEventListener('click', () => {
         hiddenToggle.style.display = "flex";
@@ -39,6 +42,8 @@ const playerButtonObj = {
         twoPlayerButton = document.querySelector("#two-players-btn").disabled = true;
         singlePlayerButton = document.querySelector("#single-player-btn").disabled = true;
         PShiddenToggle.style.display = "flex";
+        gameData.players[0] = 'X';
+        gameData.players[1] = 'O';
     }), 
     back: playerSelectButton.addEventListener('click', () => {
         PShiddenToggle.style.display = "none";
@@ -48,13 +53,11 @@ const playerButtonObj = {
     })
 }
 
-
 // player name submit 
 
 
 // event listeners  
 subButton.addEventListener('click', () => {
-    gameData.players[0] = 'X' 
     gameData.playerName[0] = playerInput.value; 
     console.log(gameData.playerName[0])
     
