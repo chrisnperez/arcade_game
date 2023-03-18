@@ -58,8 +58,12 @@ const playerButtonObj = {
 
 // event listeners  
 subButton.addEventListener('click', () => {
-    gameData.playerName[0] = playerInput.value; 
-    console.log(gameData.playerName[0])
+    if (gameData.players[1] === 'Computer') {
+        gameData.playerName[0] = playerInput.value;
+        PShiddenToggle.style.display = "hidden"
+        console.log(gameData.playerName[0]);
+    }  gameData.playerName[1] = playerInput.value;
+    
     
  })
 
