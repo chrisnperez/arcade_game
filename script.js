@@ -62,7 +62,7 @@ subButton.addEventListener('click', () => {
         gameData.playerName[0] = playerInput.value;
         PShiddenToggle.style.display = "hidden"
         console.log(gameData.playerName[0]);
-    }  gameData.playerName[1] = playerInput.value;
+    }  gameData.playerName[1] = playerInput.value; 
     
     
  })
