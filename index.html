@@ -12,35 +12,45 @@
 
 <body>
   <h1>Tic Tac Toes</h1>
-  <div class="player-dashboard" id="player-dash-dom">
-    <span class="plr-butn"><button id="single-player-btn">Single Player</button></span>
-    <span class="plr-butn"><button id="two-players-btn">Two Players</button></span>
+  <section>
+    <div class="player-dashboard" id="player-dash-dom">
+      <span class="plr-butn buttons-style"><button class="buttons-style" id="single-player-btn">Single Player</button></span>
+      <span class="plr-butn"><button class="buttons-style" id="two-players-btn">Two Players</button></span>
+    </div>
+    <div class="player-input" id="player-input-dom">
+      <input type="text" class="hidden" id="player-one-name" placeholder="Player One">
+      <input type="text" class="hidden" id="player-two-name" placeholder="Player Two">
+      <button class="start-game hidden buttons-style" id="start-game-button">Start Game!</button>
+    </div>
+    <div class="game-dashboard">
+      <h2> Score </h2>
+      <div id="player-one-score"> Null </div>
+      <div id="player-two-score"> Null </div>
+    </div>
+
+    <div id="alerts"></div>
+  
+  <div class="reset-container">
+    <button class="buttons-style" id="reset-game-btn">Start Over</button>
   </div>
-  <div class="player-input" id="player-input-dom">
-    <input type="text" class="hidden" id="player-one-name" placeholder="Player One">
-    <input type="text" class="hidden" id="player-two-name" placeholder="Player Two">
-    <button class="start-game hidden" id="start-game-button">Start Game!</button>
-  </div>
-  <div class="game-dashboard">
-    <div> Score </div>
-    <span id="player-one-score"> Null </span>
-    <span id="player-two-score"> Null </span>
+  </section>
+  <br>
+  <div class="board">
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
   </div>
 
-  <div class="reset-container">
-    <button id="reset-game-btn">Start Over</button>
-  </div>
-  <div class="board">
-    <div class="cell"><span></span></div>
-    <div class="cell"><span></span></div>
-    <div class="cell"><span></span></div>
-    <div class="cell"><span></span></div>
-    <div class="cell"><span></span></div>
-    <div class="cell"><span></span></div>
-    <div class="cell"><span></span></div>
-    <div class="cell"><span></span></div>
-    <div class="cell"><span></span></div>
-  </div>
+
+
+
+
   <script src='script.js'></script>
 </body>
 

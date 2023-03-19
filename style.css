@@ -2,20 +2,49 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #F9F5EB;
+}
 
+section {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 15px;
+    flex-direction: column;
+    gap: 5px;
+    background-color: bisque;
+
+}
+
+.buttons-style {
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    background-color: #E4DCCF;
+}
+
+#alerts {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+  
 h1 {
     display: flex;
     justify-content: center;
 }
 
 .player-dashboard {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: center;
+    gap: 10px;
+    
 }
 
 .player-input {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: center;
 }
@@ -23,15 +52,13 @@ h1 {
 .plr-butn {
     display: flex;
     justify-content: center;
-
 }
 
 .game-dashboard {
     display: flex;
     justify-content: center;
-    border: 2px solid black;
-
-    /* align-items: center; */
+    /* border: 2px solid black; */
+    align-items: center;
 }
 
 .reset-container {
@@ -45,16 +72,15 @@ h1 {
     width: 600px;
     height: 600px;
     margin: 0 auto;
-    background-color: #34495e;
-    color: #fff;
-    border: 6px solid #2c3e50;
+    background-color: #F9F5EB;
+    color: #EA5455;
+    border: 6px solid #E4DCCF;
     border-radius: 15px;
     overflow: auto;
 }
 
 .cell {
-    border: 6px solid #2c3e50;
-    border-radius: 2px;
+    border: 6px solid #E4DCCF;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: bold;
     font-size: 5em;
