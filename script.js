@@ -1,16 +1,50 @@
+// I took this animation from a websource for text animation  vvvvvv
+var textWrapper = document.querySelector('.ml11 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+anime.timeline({ loop: true })
+    .add({
+        targets: '.ml11 .line',
+        scaleY: [0, 1],
+        opacity: [0.5, 1],
+        easing: "easeOutExpo",
+        duration: 700
+    })
+    .add({
+        targets: '.ml11 .line',
+        translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+        easing: "easeOutExpo",
+        duration: 700,
+        delay: 100
+    }).add({
+        targets: '.ml11 .letter',
+        opacity: [0, 1],
+        easing: "easeOutExpo",
+        duration: 600,
+        offset: '-=775',
+        delay: (el, i) => 34 * (i + 1)
+    }).add({
+        targets: '.ml11',
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+    });
+
+
+
+
 // dom selectors
 
 const body = document.body;
 
 let singlePlayerButton = document.querySelector("#single-player-btn");
 let twoPlayerButton = document.querySelector("#two-players-btn");
-// const playerSelectButton = document.querySelector("#select-players")
-const startGameDiv = document.getElementById("start-game-button")
-// div dom manipulators
+
 const playerInputDom = document.querySelector("#player-input-dom")
 const playerDash = document.querySelector("#player-dash-dom")
 
-const gameDash = document.querySelector("game-dashboard");
+// const gameDash = document.querySelector("game-dashboard");
 
 let playerOneInput = document.querySelector("#player-one-name");
 let playerTwoInput = document.querySelector("#player-two-name");
@@ -18,15 +52,8 @@ let playerTwoInput = document.querySelector("#player-two-name");
 let startOverButton = document.getElementById('reset-game-btn');
 const startGameButton = document.getElementById('start-game-button')
 
-let hidePlayerOneBtns = document.getElementById("single-player-btn")
-let hidePlayerTwoBtns = document.getElementById("two-players-btn")
-
 const cells = document.getElementsByClassName('cell')
 const alertsDiv = document.getElementById('alerts')
-
-const boardStatus = document.querySelector("#board")
-
-
 
 // need a game state data 
 
@@ -83,13 +110,13 @@ const checkWin = () => {
         if (cells[a].textContent === cells[b].textContent && cells[b].textContent === cells[c].textContent && cells[a].textContent !== "") {
             gameData.gameOver = true;
             if (gameData.currentPlayer === 'X') {
-                alertsDiv.textContent = `${gameData.playerName[0]} wins!`;
+                alertsDiv.textContent = `${gameData.playerName[0]} is the winner!`;
             }
             else {
-                alertsDiv.textContent = `${gameData.playerName[1]} wins!`;
+                alertsDiv.textContent = `${gameData.playerName[1]} is the winner!`;
             }
-            setTimeout(startOver, 5000);
-            return true;
+            // setTimeout(startOver, 5000);
+            return setTimeout(startOver, 5000);
         }
     }
     return false;
@@ -108,10 +135,10 @@ const checkDraw = () => {
     if (draw) {
         const win = checkWin();
         if (!win) {
-            alertsDiv.textContent = "Draw!";
+            alertsDiv.textContent = "Shoots, it's a draw!";
             gameData.gameOver = true;
-            setTimeout(startOver, 5000);
-            return true;
+            // setTimeout(startOver, 5000);
+            return setTimeout(startOver, 5000);;
         }
     }
     return false;
@@ -120,40 +147,35 @@ const checkDraw = () => {
 
 
 
-// 
+// switching player function 
 const switchPlayer = () => {
     if (gameData.currentPlayer === 'X') {
         gameData.currentPlayer = 'O';
-        alertsDiv.textContent = `${gameData.playerName[1]}'s turn`;
+        alertsDiv.textContent = `It's ${gameData.playerName[1]}'s turn`;
     } else {
         gameData.currentPlayer = 'X';
-        alertsDiv.textContent = `${gameData.playerName[0]}'s turn`;
+        alertsDiv.textContent = `It's ${gameData.playerName[0]}'s turn`;
     }
 }
 
-// pc move 
+// pc move help from Tuyen vvvvv 
 
 const computerMove = () => {
-    //Generate a random index for the computer move
     let index = Math.floor(Math.random() * 9);
     let cell = cells[index];
 
-    // If the chosen cell is already taken, generate a new index until an empty cell is found
     while (cell.textContent !== "") {
         index = Math.floor(Math.random() * 9);
         cell = cells[index];
     }
-
-    // Make the computer move by setting the cell's text content to 'O'
     cell.textContent = gameData.currentPlayer = 'O'
-    alertsDiv.textContent = `${gameData.playerName[1]} placed an O at cell ${index + 1}. Now it's ${gameData.playerName[0]}'s turn.`;
+    // alertsDiv.textContent = `${gameData.playerName[1]} placed an O at cell ${index + 1}. Now it's ${gameData.playerName[0]}'s turn.`;
 
     if (checkWin() || checkDraw()) {
         return gameData.gameOver = true;
     } else {
         switchPlayer()
     }
-    // checkDraw()
 
 }
 
@@ -231,7 +253,7 @@ const startOver = () => {
     startGameButton.classList.add("hidden")
     playerOneInput.value = '';
     playerTwoInput.value = '';
-    alert("The game has restarted!")
+    // alert("The game has restarted!")
 }
 
 
